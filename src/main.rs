@@ -1,3 +1,6 @@
+mod genrator;
+
 fn main() {
-    
+     
+     
 }
