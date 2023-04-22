@@ -4,6 +4,7 @@ use std::time::Instant;
 mod generator;
 const COHORT_SIZE: usize = 23;
 const NUMBER_OF_RUNS: i32 = 1000000;
+const PROGRESS_STEP: i32 = 100000;
 
 //TODO: Implement command line parsing for COHORT SIZE and NUMBER OF RUNS
 
@@ -20,7 +21,11 @@ fn main() {
         if loop_count == NUMBER_OF_RUNS {
             break;
         }
+        if loop_count % PROGRESS_STEP == 0 {
+            println!("{loop_count} runs completed. Continuing...");
+        }
     }
+    println!("Complete!");
     let elapsed = now.elapsed();
 
     let result: f64 = (match_count as f64 / NUMBER_OF_RUNS as f64) * 100.0;
